@@ -158,7 +158,24 @@ plt.close()
     \fimSol
   \end{enumerate}
   % P2
-  \item Considere
+  \item Considere o vetor posição $\mathbf{r} = 3.0 t \bfhat{\rho}$, onde $\bfhat{\rho} = \cos{\phi} \ui + \sin{\phi} \uj$ e $\phi = \phi(t)$. Determine a velocidade da partícula.\\
+  \iniSol
+    \begin{align}
+      \mathbf{v}(t) = \dfrac{d\mathbf{r} (t)}{dt} &= \dfrac{d}{dt}\left(3.0 t\right)\bfhat{\rho} + 3.0t \dfrac{d\bfhat{\rho}(t)}{dt} \nonumber\\
+      \mathbf{v}(t) &= 3.0 \bfhat{\rho} + 3.0t \dfrac{d\bfhat{\rho} (t)}{dt} \label{eq:drdt}
+    \end{align}
+    em que 
+    \begin{align}
+      \dfrac{d\bfhat{\rho}(t)}{dt} = \dfrac{d}{dt}\left(\cos{\phi} \ui + \sin{\phi} \uj\right) &= -\sin{\phi} \cdot \dfrac{d\phi(t)}{dt} \ui + \cos{\phi} \cdot \dfrac{d\phi(t)}{dt} \uj \nonumber\\
+      \dfrac{d\bfhat{\rho}(t)}{dt} &= -\dot{\phi} \sin{\phi} \ui + \dot{\phi} \cos{\phi} \uj \label{eq:drhodt}
+    \end{align}
+    Substituindo $\dfrac{d\bfhat{\rho}(t)}{dt}$ de (\ref{eq:drhodt}) em (\ref{eq:drdt}), obtemos:
+    \begin{align}
+      \mathbf{v}(t) &= 3.0 \bfhat{\rho} + 3.0t \left( -\dot{\phi} \sin{\phi} \ui + \dot{\phi} \cos{\phi} \uj  \right) \nonumber\\
+      \mathbf{v}(t) & 3.0 \left(  \cos{\phi} \ui + \sin{\phi} \uj \right) + 3.0t \left( -\dot{\phi} \sin{\phi} \ui + \dot{\phi} \cos{\phi} \uj  \right) \nonumber\\
+      \mathbf{v}(t) &= \left(3.0 \cos{\phi} - 3.0t\dot{\phi} \sin{\phi}\right) \ui + \left(3.0 \sin{\phi} + 3.0t\dot{\phi} \cos{\phi} \right) \uj
+    \end{align}
+  \fimSol
 \end{enumerate}
 
 
