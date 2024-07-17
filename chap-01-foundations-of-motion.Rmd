@@ -157,6 +157,8 @@ plt.close()
       \end{align*}
     \fimSol
   \end{enumerate}
+  % P2
+  \item Considere
 \end{enumerate}
 
 
