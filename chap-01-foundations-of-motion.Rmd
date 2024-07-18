@@ -172,9 +172,69 @@ plt.close()
     Substituindo $\dfrac{d\bfhat{\rho}(t)}{dt}$ de (\ref{eq:drhodt}) em (\ref{eq:drdt}), obtemos:
     \begin{align}
       \mathbf{v}(t) &= 3.0 \bfhat{\rho} + 3.0t \left( -\dot{\phi} \sin{\phi} \ui + \dot{\phi} \cos{\phi} \uj  \right) \nonumber\\
-      \mathbf{v}(t) & 3.0 \left(  \cos{\phi} \ui + \sin{\phi} \uj \right) + 3.0t \left( -\dot{\phi} \sin{\phi} \ui + \dot{\phi} \cos{\phi} \uj  \right) \nonumber\\
+      \mathbf{v}(t) &= 3.0 \left(  \cos{\phi} \ui + \sin{\phi} \uj \right) + 3.0t \left( -\dot{\phi} \sin{\phi} \ui + \dot{\phi} \cos{\phi} \uj  \right) \nonumber\\
       \mathbf{v}(t) &= \left(3.0 \cos{\phi} - 3.0t\dot{\phi} \sin{\phi}\right) \ui + \left(3.0 \sin{\phi} + 3.0t\dot{\phi} \cos{\phi} \right) \uj
     \end{align}
+  \fimSol
+  % P3
+  \item A posição de uma partícula pode ser dada por $\mathbf{r} (t) = R \cos{(\omega t)} \ui + R \sin{(\omega t)} \uj$, onde $R$ e $\omega$ são constantes. Descreva a trajetória desta partícula. Qual é a aceleração da partícula como função do tempo?\\
+  \iniSol
+    Sejam $x(t) = R \cos{(\omega t)}$ e $y(t) = R \sin{(\omega t)}$ as coordenadas cartesianas da trajetória da partícula. Observemos que
+    \begin{align*}
+    x^2 + y^2 &= \left[R \cos{(\omega t)}\right]^2 +  \left[R \sin{(\omega t)}\right]^2\\
+    &= R^2 \cos^2{(\omega t)} + R^2 \sin^2{(\omega t)}\\
+    &= R^2 \left[\cos^2{(\omega t)} + \sin^2{(\omega t)}\right]\\
+    & = R^2
+    \end{align*}
+    A partícula descreve uma trajetória circular de raio $R$ e centro na origem.
+    %%%%
+    A seguir, determinemos a velocidade da partícula:
+    \begin{align*}
+      \mathbf{v}(t) = \dfrac{d\mathbf{r}(t)}{dt} = -\omega R \sin{(\omega t)} \ui + \omega R \cos{(\omega t)} \uj 
+    \end{align*}
+    Observemos que o vetor velocidade $\mathbf{v}$ é sempre perpendicular ao vetor posição $\mathbf{r}$. De fato, o produto escalar desses vetores é nulo:
+    \begin{align*}
+      \mathbf{r} \cdot \mathbf{v} &= \left[ R \cos{(\omega t)} \ui + R \sin{(\omega t)} \uj \right] \cdot \left[ -\omega R \sin{(\omega t)} \ui + \omega R \cos{(\omega t)} \uj \right]  \\
+      &= - \omega R^2 \sin{(\omega t)} \cos{(\omega t)} + \omega R^2 \sin{(\omega t)} \cos{(\omega t)}\\
+      & = 0
+    \end{align*}
+    %%%%
+    A aceleração da partícula é dada por:
+    \begin{align*}
+      \mathbf{a} (t) &= \dfrac{d \mathbf{v} (t)}{dt} = -\omega^2 R \cos{(\omega t)} \ui - \omega^2 R \sin{(\omega t)} \uj\\
+      \mathbf{a} (t) &= - \omega^2 \mathbf{r}(t)
+    \end{align*}
+    A aceleração da partícula tem mesma direção e sentido oposto ao vetor posição em qualquer instante, ou seja, o vetor aceleração aponta para o centro da trajetória circular.
+    %%%%
+    A figura seguinte mostra a trajetória da partícula e os vetores posição, velocidade e aceleração num dado instante.
+```{r, include=FALSE}
+R <- 3
+w <- pi/6
+t <- 3/2
+r <- R * c(cos(w * t), sin(w * t))
+v <- w * R * c(-sin(w * t), cos(w * t))
+a <- -w^2 * r
+theta <- (180/pi) * w * t
+```
+    %%%%
+    \begin{figure}[H]
+      \centering
+      \begin{tikzpicture}
+        \draw[-latex] (`r -1.2*R`, 0) -- (`r 1.2*R`, 0) node[below] {$x$};
+        \draw[-latex] (0, `r -1.2*R`) -- (0, `r 1.2*R`) node[left] {$y$};
+        \draw[thick, gray, dashed] (0,0) circle (`r R`);
+        \filldraw[gray] (`r r`) circle (5pt);
+        \draw[thick, red, -latex] (0,0) -- (`r r`) node[midway, above] {$\mathbf{r}$};
+        \draw[blue, -latex] (`r r`) -- + (`r v`) node[midway, above] {$\mathbf{v}$};
+        \draw[thick, blue, -latex] (`r r`) -- + (`r a`) node[midway, below, xshift=2pt] {$\mathbf{a}$};
+        \draw[-latex] (`r 0.4*R`, 0) arc (0:`r theta`:`r 0.4*R`) node[midway, right] {$ \omega t$};
+        \draw (2pt, `r R`) -- (-2pt, `r R`) node[left, fill=white] {$R$};
+        \draw (2pt, `r -R`) -- (-2pt, `r -R`) node[left, fill=white] {$R$};
+        \draw (`r R`, 2pt) -- (`r R`, -2pt) node[below, fill=white] {$R$};
+        \draw (`r -R`, 2pt) -- (`r -R`, -2pt) node[below, fill=white] {$R$};
+      \end{tikzpicture}
+    \end{figure}
+
   \fimSol
 \end{enumerate}
 
